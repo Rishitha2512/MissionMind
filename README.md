@@ -73,8 +73,11 @@ that has been shared.
 
 The frontend build currently lives in `frontend/dist`; the React source files
 are not included, so the deployed frontend is served from that existing build.
-The Python analysis service is not included in this basic deployment. Observation
-analysis requires deploying it separately and setting `ANALYSIS_SERVICE_URL`.
+The Blueprint also deploys the Python analysis service and connects it to the
+Node API automatically. Dense sentence-transformer embeddings are omitted from
+the lightweight Render build; evidence retrieval uses BM25 instead. To enable
+AI-generated explanations, set `OPENAI_API_KEY` on the `missionmind-analysis`
+service in the Render dashboard.
 
 ### 5. Evaluation
 ```bash

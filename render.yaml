@@ -13,3 +13,15 @@ services:
         sync: false
       - key: JWT_SECRET
         generateValue: true
+      - key: ANALYSIS_SERVICE_URL
+        fromService:
+          type: web
+          name: missionmind-analysis
+          property: url
+  - type: web
+    name: missionmind-analysis
+    runtime: python
+    plan: free
+    buildCommand: pip install -r analysis-service/requirements.txt
+    startCommand: cd analysis-service && uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
