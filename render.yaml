@@ -14,10 +14,7 @@ services:
       - key: JWT_SECRET
         generateValue: true
       - key: ANALYSIS_SERVICE_URL
-        fromService:
-          type: web
-          name: missionmind-analysis
-          property: url
+        value: https://missionmind-analysis.onrender.com
   - type: web
     name: missionmind-analysis
     runtime: python
